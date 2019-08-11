@@ -1,0 +1,30 @@
+.b-hint {
+  position: relative;
+  background-color: #adb8c1;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 13px !important;
+  font-weight: 700;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.tooltip-wrapper {
+  border: 1px blue solid;
+  overflow: hidden;
+}
+
+.card {
+  border: 1px greenyellow solid;
+  background-color: greenyellow;
+}
+
+.hello-tooltip {
+  pointer-events: all;
+}
