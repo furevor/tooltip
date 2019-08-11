@@ -14,58 +14,32 @@ export class AppComponent implements AfterViewInit{
   hintMouseEvents$: Subject<string> = new Subject();
   @ViewChild('pop', { static: false }) tooltip;
 
-  constructor() {
-    const showTooltipHandler$ = this.tooltipShowEvents$.pipe(
-      filter(event => event === 'show'),
-      throttleTime(800)
-    );
+  constructor() {}
 
-    showTooltipHandler$.subscribe(event => {
-      console.log(event);
-      this.tooltip.show();
-    });
-
-    this.hintMouseEvents$.subscribe(console.log);
-
-    const closeTooltip$ = this.tooltipShowEvents$.pipe(filter(event => event === 'hide'));
-
-  }
-
-  ngAfterViewInit(): void {
-    // this.mouseMoves$ = fromEvent(this.card.nativeElement, 'mousemove');
-    //
-    // this.mouseMoves$.subscribe( event => console.log('logging mousemove'));
-    //
-    // console.log('after view init');
-  }
+  ngAfterViewInit(): void {}
 
   tooltipMouseLeave() {
     const delayHintClose = this.hintMouseEvents$.pipe(
       filter(event => event === 'enter'),
       tap(console.log),
-      // delay(800)
     );
-    // timer(800).pipe(takeUntil(delayHintClose)).subscribe(() => this.tooltip.hide());
-    // of(true).pipe(takeUntil(this.hintMouseEvents$), delay(800)).subscribe(() => this.tooltip.hide());
+    timer(800).pipe(takeUntil(delayHintClose)).subscribe(() => this.tooltip.hide());
   }
 
   tooltipMouseEnter() {
     this.tooltipShowEvents$.next('show');
-    // const delayHintClose = this.hintMouseEvents$.pipe(
-    //   filter(event => event === 'enter'),
-    //   tap(console.log),
-    //   // delay(800)
-    // );
-    // timer(800).pipe(takeUntil(delayHintClose)).subscribe(() => this.tooltip.hide());
-    // of(true).pipe(takeUntil(this.hintMouseEvents$), delay(800)).subscribe(() => this.tooltip.hide());
+    const delayHintClose = this.hintMouseEvents$.pipe(
+      filter(event => event === 'enter'),
+      tap(console.log),
+    );
   }
 
   tooltipOnShow() {
-    // this.tooltipShowEvents$.next('show');
+    this.tooltipShowEvents$.next('show');
   }
 
   tooltipOnHide() {
-    // this.tooltipShowEvents$.next('hide');
+    this.tooltipShowEvents$.next('hide');
   }
 
   hintEnter($event) {
