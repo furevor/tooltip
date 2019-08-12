@@ -23,33 +23,17 @@
     <span class="b-hint"
           #pop="bs-tooltip"
           containerClass="custom-class"
-          (onShown)="tooltipOnShow()"
-          (onHidden)="tooltipOnHide()"
-          (mouseleave)="tooltipMouseLeave()"
-          (mouseenter)="tooltipMouseEnter()"
+          (mouseleave)="hide()"
+          (mouseenter)="show()"
           [tooltip]="tolTemplate"
           container="body"
-          placement="bottom"
-          triggers="mouseenter focus">?</span>
+          placement="bottom" triggers=''>?</span>
   </div>
 </div>
 <ng-template #tolTemplate>
-  <div class="hello-tooltip" (mouseenter)="hintEnter($event)" (mouseleave)="hintLeave($event)">
-    Just another: {{content}}
+  <div class="hello-tooltip" (mouseenter)="show()" (mouseleave)="hide()">
+    Just another: Hello tooltip show me text
   </div>
 </ng-template>
-
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
 <router-outlet></router-outlet>
